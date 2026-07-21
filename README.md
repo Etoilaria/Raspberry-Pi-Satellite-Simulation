@@ -10,16 +10,15 @@ The program will cycle through three predefined telemetry sets of data using a p
 - Warning: Rapid red LED flashes
 - Unhealthy: Long red LED flashes
 
-
 ### Status
 
 In progress!
 
 ### Hardware Components
 
-* Raspberry Pi
-* Push button
-* Green and red LEDs
-* Breadboard
-* Resistors
-* Jumper wires
+- Raspberry Pi
+-  Push button
+-  Green and red LEDs
+-  Breadboard
+-  Resistors
+-  Jumper wires

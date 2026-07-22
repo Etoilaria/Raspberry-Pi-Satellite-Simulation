@@ -2,9 +2,10 @@
 #include <pigpio.h>
 
 #define red 17
+#define green 27
 
 int main(void){
-    char key;
+    int health = 5;
 
     // Start pigpio library
     if (gpioInitialise() < 0)
@@ -15,21 +16,31 @@ int main(void){
 
     // Set GPIO 17 as an output pin
     gpioSetMode(red, PI_OUTPUT);
+    gpioSetMode(green, PI_OUTPUT);
 
-    // Turn on LED
-    gpioWrite(red, PI_HIGH);
 
-    printf("Red LED on!\n");
+    if (health <= 0){
+        gpioWrite(red, PI_HIGH);
+        printf("Danger!\n");
+    }
+    else if (health > 0 && health < 5){
+        gpioWrite(green, PI_HIGH);
+        printf("Warning!\n");
+    }
+    else if (health >= 5){
+        gpioWrite(green, PI_HIGH);
+        printf("Healthy!\n");
+    }
+
     printf("Press ENTER to turn it off\n");
 
-    key = getchar();
+    getchar();
     
     // Turn the LED off before ending
     gpioWrite(red, PI_LOW);
+    gpioWrite(green, PI_LOW);
 
     gpioTerminate();
-
-    printf("Red LED off!");
 
     return 0;
 }

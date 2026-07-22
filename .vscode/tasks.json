@@ -10,12 +10,12 @@
                 "-g",
                 "-Wall",
                 "-Wextra",
-                "-pthread",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "-lpigpiod_if2",
-                "-lrt"
+                "-lrt",
+                "-pthread"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -27,7 +27,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Build C program using the pigpio daemon"
+            "detail": "Build active C file using the pigpio daemon"
         }
     ]
 }

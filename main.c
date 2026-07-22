@@ -63,9 +63,18 @@ int main(void){
         gpioWrite(red, PI_LOW);
         gpioWrite(green, PI_LOW);
 
-        // turn green LED on
-        gpioWrite(green, PI_HIGH);
         printf("Warning!\n");
+
+        //flash the red LED 5 times
+
+        for (int i = 0; i < 5; i++){
+            gpioWrite(red, PI_HIGH);
+            gpioDelay(500000); // keep on for .5 secs
+            gpioWrite(red, PI_LOW);
+            gpioDelay(500000); // keep on for .5 secs
+
+            gpioWrite(green, PI_HIGH);
+        }
     }
     else if ((voltage > 12.0 && voltage < 15.0) &&
         (temp > 0.0 && temp < 45.0) &&

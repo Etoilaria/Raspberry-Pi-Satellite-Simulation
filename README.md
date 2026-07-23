@@ -21,4 +21,4 @@ The program will cycle through three predefined telemetry datasets using a push 
 
 ### Status
 
-In progress!
+Complete

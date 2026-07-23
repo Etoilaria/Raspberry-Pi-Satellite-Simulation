@@ -42,7 +42,7 @@ int main(void){
             gpioDelay(10000); //wait 10 000 microseconds (10 milliseconds) at a time
         }
 
-        gpioDelay(100000); //wait 50 milliseconds to avoid button bounce
+        gpioDelay(100000); //wait 100 milliseconds to avoid button bounce
 
         printf("Testing dataset %d\n", (dataset+1));
 
@@ -93,19 +93,28 @@ int main(void){
             printf("Healthy!\n");
 
         }
-        while(gpioRead(button) == PI_HIGH){//wait for button release
+        while(gpioRead(button) == PI_LOW){//wait for button release
             gpioDelay(10000); //wait 10 000 microseconds (10 milliseconds) at a time
         }
         
         gpioDelay(100000); 
         dataset++;
 
-        if (dataset == 3){dataset = 0;}
-    }
+        char choice;
 
-    printf("Press ENTER to turn LEDs off\n");
-    getchar();
-    
+        if (dataset == 3){
+            printf("You have reached the end of the cycle\n \n");
+            printf("Restart cycle?(y/n): ");
+            scanf(" %c", &choice);
+            if (choice == 'y'){
+                dataset = 0;
+            }
+            else  {
+                printf("Shutting down program...\n");
+                break;
+            }
+        }
+    }
     // Turn the LED off before ending
     gpioWrite(red, PI_LOW);
     gpioWrite(green, PI_LOW);

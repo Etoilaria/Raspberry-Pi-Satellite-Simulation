@@ -6,9 +6,9 @@ The project is written in C and uses Raspberry Pi GPIO for the button and LEDs.
 
 The program cycles through three predefined telemetry datasets using a push button. Each set is compared against healthy satellite ranges and be displayed by the circuit as the following:
 
-- Healthy: Long green LED flashes
-- Warning: 5 Rapid red LED flashes then green LED flashes
-- Unhealthy: Long red LED flashes
+- Healthy: Long green LED flash
+- Warning: 5 Rapid red LED flashes, followed by long green LED flash
+- Unhealthy: Long red LED flash
 
 ### Hardware Components
 
